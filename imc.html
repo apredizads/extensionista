@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+    <a href="extencionista.html">Voltar ao menu</a>
+    <h1>IMC</h1>
+
+    <nav>
+        <ul>
+            <li><a href="nutriçao.html">nutriçao</a></li>
+            <li><a href="exercicios.html">exercicios</a></li>
+            <li><a href="imc.html">imc</a></li>
+        </ul>
+    <h2>indice de massa corporal</h2>
+    <img src="transferir.png" alt="">
+
+    <p> IMC é a sigla para Índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de Saúde para calcular o peso ideal de cada pessoa.
+
+O índice é calculado da seguinte maneira: divide-se o peso do paciente pela sua altura elevada ao quadrado. Diz-se que o indivíduo tem peso normal quando o resultado do IMC está entre 18,5 e 24,9.
+
+Quer descobrir seu IMC? Insira seu peso e sua altura nos campos abaixo e compare com os índices da tabela. Importante: siga os exemplos e use pontos como separadores.
+</p>
+
+
+  <div class="container">
+    <h2>Calculadora de IMC</h2>
+    
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" placeholder="Ex: 70" required>
+
+    <label for="altura">Altura (m):</label>
+    <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01" required>
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById("peso").value);
+      const altura = parseFloat(document.getElementById("altura").value);
+      const resultado = document.getElementById("resultado");
+
+      if (!peso || !altura || peso <= 0 || altura <= 0) {
+        resultado.textContent = "Por favor, insira valores válidos.";
+        resultado.style.color = "red";
+        return;
+      }
+
+      const imc = peso / (altura * altura);
+      let classificacao = "";
+
+      if (imc < 18.5) {
+        classificacao = "Abaixo do peso";
+      } else if (imc < 24.9) {
+        classificacao = "Peso normal";
+      } else if (imc < 29.9) {
+        classificacao = "Sobrepeso";
+      } else if (imc < 34.9) {
+        classificacao = "Obesidade grau I";
+      } else if (imc < 39.9) {
+        classificacao = "Obesidade grau II";
+      } else {
+        classificacao = "Obesidade grau III (mórbida)";
+      }
+
+      resultado.style.color = "#2c3e50";
+      resultado.innerHTML = `Seu IMC é <strong>${imc.toFixed(2)}</strong><br>${classificacao}`;
+
+    }
+
+
+    </script>
+  <img src="" alt="">
+</main>
+
+  <footer>
+    <h3>Meu Site</h3>
+    <div class="footer-links">
+    
+    
+      <a href="#">Serviços</a>
+      <a href="#">Contato</a>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Meu Site. Todos os direitos reservados.
+    </div>
+  </footer>
+
+    
+</body>
+</html>
